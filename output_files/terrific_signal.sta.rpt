@@ -1,0 +1,931 @@
+Timing Analyzer report for terrific_signal
+Fri Jun 16 12:35:23 2023
+Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Timing Analyzer Summary
+  3. Parallel Compilation
+  4. Clocks
+  5. Fmax Summary
+  6. Setup Summary
+  7. Hold Summary
+  8. Recovery Summary
+  9. Removal Summary
+ 10. Minimum Pulse Width Summary
+ 11. Setup: 'clk'
+ 12. Setup: 'flag'
+ 13. Hold: 'clk'
+ 14. Hold: 'flag'
+ 15. Recovery: 'clk'
+ 16. Removal: 'clk'
+ 17. Setup Transfers
+ 18. Hold Transfers
+ 19. Recovery Transfers
+ 20. Removal Transfers
+ 21. Report TCCS
+ 22. Report RSKM
+ 23. Unconstrained Paths Summary
+ 24. Clock Status Summary
+ 25. Unconstrained Input Ports
+ 26. Unconstrained Output Ports
+ 27. Unconstrained Input Ports
+ 28. Unconstrained Output Ports
+ 29. Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-----------------------------------------------------------------------------+
+; Timing Analyzer Summary                                                     ;
++-----------------------+-----------------------------------------------------+
+; Quartus Prime Version ; Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
+; Timing Analyzer       ; Legacy Timing Analyzer                              ;
+; Revision Name         ; terrific_signal                                     ;
+; Device Family         ; MAX V                                               ;
+; Device Name           ; 5M1270ZT144C5                                       ;
+; Timing Models         ; Final                                               ;
+; Delay Model           ; Slow Model                                          ;
+; Rise/Fall Delays      ; Unavailable                                         ;
++-----------------------+-----------------------------------------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 12          ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
++----------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clocks                                                                                                                                                                           ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+----------+
+; Clock Name ; Type ; Period ; Frequency  ; Rise  ; Fall  ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets  ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+----------+
+; clk        ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { clk }  ;
+; flag       ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { flag } ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+----------+
+
+
++--------------------------------------------------+
+; Fmax Summary                                     ;
++------------+-----------------+------------+------+
+; Fmax       ; Restricted Fmax ; Clock Name ; Note ;
++------------+-----------------+------------+------+
+; 83.35 MHz  ; 83.35 MHz       ; clk        ;      ;
+; 187.34 MHz ; 187.34 MHz      ; flag       ;      ;
++------------+-----------------+------------+------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
+
+
++---------------------------------+
+; Setup Summary                   ;
++-------+---------+---------------+
+; Clock ; Slack   ; End Point TNS ;
++-------+---------+---------------+
+; clk   ; -10.997 ; -194.979      ;
+; flag  ; -4.338  ; -37.945       ;
++-------+---------+---------------+
+
+
++--------------------------------+
+; Hold Summary                   ;
++-------+--------+---------------+
+; Clock ; Slack  ; End Point TNS ;
++-------+--------+---------------+
+; clk   ; -2.997 ; -2.997        ;
+; flag  ; 1.686  ; 0.000         ;
++-------+--------+---------------+
+
+
++---------------------------------+
+; Recovery Summary                ;
++-------+---------+---------------+
+; Clock ; Slack   ; End Point TNS ;
++-------+---------+---------------+
+; clk   ; -11.813 ; -317.535      ;
++-------+---------+---------------+
+
+
++-------------------------------+
+; Removal Summary               ;
++-------+-------+---------------+
+; Clock ; Slack ; End Point TNS ;
++-------+-------+---------------+
+; clk   ; 6.289 ; 0.000         ;
++-------+-------+---------------+
+
+
++--------------------------------+
+; Minimum Pulse Width Summary    ;
++-------+--------+---------------+
+; Clock ; Slack  ; End Point TNS ;
++-------+--------+---------------+
+; clk   ; -2.289 ; -2.289        ;
+; flag  ; 0.234  ; 0.000         ;
++-------+--------+---------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Setup: 'clk'                                                                                                                  ;
++---------+-----------------------+-----------------------+--------------+-------------+--------------+------------+------------+
+; Slack   ; From Node             ; To Node               ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++---------+-----------------------+-----------------------+--------------+-------------+--------------+------------+------------+
+; -10.997 ; \counter_proc:cnt[2]  ; flag                  ; clk          ; clk         ; 1.000        ; 0.000      ; 11.664     ;
+; -10.997 ; \counter_proc:cnt[4]  ; flag                  ; clk          ; clk         ; 1.000        ; 0.000      ; 11.664     ;
+; -10.849 ; \counter_proc:cnt[7]  ; flag                  ; clk          ; clk         ; 1.000        ; 0.000      ; 11.516     ;
+; -10.783 ; \counter_proc:cnt[14] ; flag                  ; clk          ; clk         ; 1.000        ; 0.000      ; 11.450     ;
+; -10.637 ; \counter_proc:cnt[0]  ; flag                  ; clk          ; clk         ; 1.000        ; 0.000      ; 11.304     ;
+; -10.561 ; \counter_proc:cnt[5]  ; flag                  ; clk          ; clk         ; 1.000        ; 0.000      ; 11.228     ;
+; -10.416 ; \counter_proc:cnt[6]  ; flag                  ; clk          ; clk         ; 1.000        ; 0.000      ; 11.083     ;
+; -10.338 ; \counter_proc:cnt[8]  ; flag                  ; clk          ; clk         ; 1.000        ; 0.000      ; 11.005     ;
+; -10.308 ; \counter_proc:cnt[10] ; flag                  ; clk          ; clk         ; 1.000        ; 0.000      ; 10.975     ;
+; -10.286 ; \counter_proc:cnt[18] ; flag                  ; clk          ; clk         ; 1.000        ; 0.000      ; 10.953     ;
+; -10.089 ; \counter_proc:cnt[9]  ; flag                  ; clk          ; clk         ; 1.000        ; 0.000      ; 10.756     ;
+; -10.034 ; \counter_proc:cnt[11] ; flag                  ; clk          ; clk         ; 1.000        ; 0.000      ; 10.701     ;
+; -10.013 ; \counter_proc:cnt[13] ; flag                  ; clk          ; clk         ; 1.000        ; 0.000      ; 10.680     ;
+; -9.941  ; \counter_proc:cnt[12] ; flag                  ; clk          ; clk         ; 1.000        ; 0.000      ; 10.608     ;
+; -9.841  ; \counter_proc:cnt[17] ; flag                  ; clk          ; clk         ; 1.000        ; 0.000      ; 10.508     ;
+; -9.781  ; \counter_proc:cnt[15] ; flag                  ; clk          ; clk         ; 1.000        ; 0.000      ; 10.448     ;
+; -9.777  ; \counter_proc:cnt[16] ; flag                  ; clk          ; clk         ; 1.000        ; 0.000      ; 10.444     ;
+; -9.544  ; \counter_proc:cnt[3]  ; flag                  ; clk          ; clk         ; 1.000        ; 0.000      ; 10.211     ;
+; -9.369  ; \counter_proc:cnt[1]  ; flag                  ; clk          ; clk         ; 1.000        ; 0.000      ; 10.036     ;
+; -9.330  ; \counter_proc:cnt[20] ; flag                  ; clk          ; clk         ; 1.000        ; 0.000      ; 9.997      ;
+; -9.224  ; \counter_proc:cnt[22] ; flag                  ; clk          ; clk         ; 1.000        ; 0.000      ; 9.891      ;
+; -9.164  ; \counter_proc:cnt[21] ; flag                  ; clk          ; clk         ; 1.000        ; 0.000      ; 9.831      ;
+; -9.031  ; \counter_proc:cnt[19] ; flag                  ; clk          ; clk         ; 1.000        ; 0.000      ; 9.698      ;
+; -8.740  ; \counter_proc:cnt[2]  ; \counter_proc:cnt[18] ; clk          ; clk         ; 1.000        ; 0.000      ; 9.407      ;
+; -8.740  ; \counter_proc:cnt[4]  ; \counter_proc:cnt[18] ; clk          ; clk         ; 1.000        ; 0.000      ; 9.407      ;
+; -8.592  ; \counter_proc:cnt[7]  ; \counter_proc:cnt[18] ; clk          ; clk         ; 1.000        ; 0.000      ; 9.259      ;
+; -8.526  ; \counter_proc:cnt[14] ; \counter_proc:cnt[18] ; clk          ; clk         ; 1.000        ; 0.000      ; 9.193      ;
+; -8.380  ; \counter_proc:cnt[0]  ; \counter_proc:cnt[18] ; clk          ; clk         ; 1.000        ; 0.000      ; 9.047      ;
+; -8.320  ; \counter_proc:cnt[2]  ; \counter_proc:cnt[11] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.987      ;
+; -8.320  ; \counter_proc:cnt[4]  ; \counter_proc:cnt[11] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.987      ;
+; -8.304  ; \counter_proc:cnt[5]  ; \counter_proc:cnt[18] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.971      ;
+; -8.233  ; \counter_proc:cnt[2]  ; \counter_proc:cnt[14] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.900      ;
+; -8.233  ; \counter_proc:cnt[4]  ; \counter_proc:cnt[14] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.900      ;
+; -8.187  ; \counter_proc:cnt[23] ; flag                  ; clk          ; clk         ; 1.000        ; 0.000      ; 8.854      ;
+; -8.172  ; \counter_proc:cnt[7]  ; \counter_proc:cnt[11] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.839      ;
+; -8.159  ; \counter_proc:cnt[6]  ; \counter_proc:cnt[18] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.826      ;
+; -8.085  ; \counter_proc:cnt[7]  ; \counter_proc:cnt[14] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.752      ;
+; -8.081  ; \counter_proc:cnt[8]  ; \counter_proc:cnt[18] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.748      ;
+; -8.070  ; \counter_proc:cnt[2]  ; \counter_proc:cnt[15] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.737      ;
+; -8.070  ; \counter_proc:cnt[4]  ; \counter_proc:cnt[15] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.737      ;
+; -8.051  ; \counter_proc:cnt[10] ; \counter_proc:cnt[18] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.718      ;
+; -7.960  ; \counter_proc:cnt[0]  ; \counter_proc:cnt[11] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.627      ;
+; -7.924  ; \counter_proc:cnt[2]  ; \counter_proc:cnt[16] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.591      ;
+; -7.924  ; \counter_proc:cnt[4]  ; \counter_proc:cnt[16] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.591      ;
+; -7.922  ; \counter_proc:cnt[7]  ; \counter_proc:cnt[15] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.589      ;
+; -7.884  ; \counter_proc:cnt[5]  ; \counter_proc:cnt[11] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.551      ;
+; -7.873  ; \counter_proc:cnt[0]  ; \counter_proc:cnt[14] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.540      ;
+; -7.832  ; \counter_proc:cnt[9]  ; \counter_proc:cnt[18] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.499      ;
+; -7.797  ; \counter_proc:cnt[5]  ; \counter_proc:cnt[14] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.464      ;
+; -7.777  ; \counter_proc:cnt[11] ; \counter_proc:cnt[18] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.444      ;
+; -7.776  ; \counter_proc:cnt[7]  ; \counter_proc:cnt[16] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.443      ;
+; -7.756  ; \counter_proc:cnt[13] ; \counter_proc:cnt[18] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.423      ;
+; -7.739  ; \counter_proc:cnt[6]  ; \counter_proc:cnt[11] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.406      ;
+; -7.710  ; \counter_proc:cnt[0]  ; \counter_proc:cnt[15] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.377      ;
+; -7.684  ; \counter_proc:cnt[2]  ; \counter_proc:cnt[12] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.351      ;
+; -7.684  ; \counter_proc:cnt[12] ; \counter_proc:cnt[18] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.351      ;
+; -7.684  ; \counter_proc:cnt[4]  ; \counter_proc:cnt[12] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.351      ;
+; -7.652  ; \counter_proc:cnt[6]  ; \counter_proc:cnt[14] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.319      ;
+; -7.644  ; \counter_proc:cnt[2]  ; \counter_proc:cnt[10] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.311      ;
+; -7.644  ; \counter_proc:cnt[4]  ; \counter_proc:cnt[10] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.311      ;
+; -7.634  ; \counter_proc:cnt[5]  ; \counter_proc:cnt[15] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.301      ;
+; -7.584  ; \counter_proc:cnt[17] ; \counter_proc:cnt[18] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.251      ;
+; -7.575  ; \counter_proc:cnt[2]  ; \counter_proc:cnt[8]  ; clk          ; clk         ; 1.000        ; 0.000      ; 8.242      ;
+; -7.575  ; \counter_proc:cnt[4]  ; \counter_proc:cnt[8]  ; clk          ; clk         ; 1.000        ; 0.000      ; 8.242      ;
+; -7.574  ; \counter_proc:cnt[8]  ; \counter_proc:cnt[14] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.241      ;
+; -7.564  ; \counter_proc:cnt[0]  ; \counter_proc:cnt[16] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.231      ;
+; -7.544  ; \counter_proc:cnt[10] ; \counter_proc:cnt[14] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.211      ;
+; -7.536  ; \counter_proc:cnt[7]  ; \counter_proc:cnt[12] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.203      ;
+; -7.524  ; \counter_proc:cnt[15] ; \counter_proc:cnt[18] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.191      ;
+; -7.522  ; \counter_proc:cnt[2]  ; \counter_proc:cnt[17] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.189      ;
+; -7.522  ; \counter_proc:cnt[4]  ; \counter_proc:cnt[17] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.189      ;
+; -7.520  ; \counter_proc:cnt[16] ; \counter_proc:cnt[18] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.187      ;
+; -7.496  ; \counter_proc:cnt[7]  ; \counter_proc:cnt[10] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.163      ;
+; -7.489  ; \counter_proc:cnt[6]  ; \counter_proc:cnt[15] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.156      ;
+; -7.488  ; \counter_proc:cnt[5]  ; \counter_proc:cnt[16] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.155      ;
+; -7.427  ; \counter_proc:cnt[7]  ; \counter_proc:cnt[8]  ; clk          ; clk         ; 1.000        ; 0.000      ; 8.094      ;
+; -7.411  ; \counter_proc:cnt[8]  ; \counter_proc:cnt[15] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.078      ;
+; -7.400  ; \counter_proc:cnt[2]  ; \counter_proc:cnt[22] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.067      ;
+; -7.400  ; \counter_proc:cnt[14] ; \counter_proc:cnt[15] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.067      ;
+; -7.400  ; \counter_proc:cnt[4]  ; \counter_proc:cnt[22] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.067      ;
+; -7.399  ; \counter_proc:cnt[2]  ; \counter_proc:cnt[9]  ; clk          ; clk         ; 1.000        ; 0.000      ; 8.066      ;
+; -7.399  ; \counter_proc:cnt[4]  ; \counter_proc:cnt[9]  ; clk          ; clk         ; 1.000        ; 0.000      ; 8.066      ;
+; -7.381  ; \counter_proc:cnt[10] ; \counter_proc:cnt[15] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.048      ;
+; -7.377  ; \counter_proc:cnt[14] ; \counter_proc:cnt[16] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.044      ;
+; -7.374  ; \counter_proc:cnt[7]  ; \counter_proc:cnt[17] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.041      ;
+; -7.343  ; \counter_proc:cnt[6]  ; \counter_proc:cnt[16] ; clk          ; clk         ; 1.000        ; 0.000      ; 8.010      ;
+; -7.325  ; \counter_proc:cnt[9]  ; \counter_proc:cnt[14] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.992      ;
+; -7.324  ; \counter_proc:cnt[0]  ; \counter_proc:cnt[12] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.991      ;
+; -7.287  ; \counter_proc:cnt[3]  ; \counter_proc:cnt[18] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.954      ;
+; -7.284  ; \counter_proc:cnt[0]  ; \counter_proc:cnt[10] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.951      ;
+; -7.270  ; \counter_proc:cnt[11] ; \counter_proc:cnt[14] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.937      ;
+; -7.265  ; \counter_proc:cnt[8]  ; \counter_proc:cnt[16] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.932      ;
+; -7.252  ; \counter_proc:cnt[7]  ; \counter_proc:cnt[22] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.919      ;
+; -7.251  ; \counter_proc:cnt[7]  ; \counter_proc:cnt[9]  ; clk          ; clk         ; 1.000        ; 0.000      ; 7.918      ;
+; -7.248  ; \counter_proc:cnt[5]  ; \counter_proc:cnt[12] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.915      ;
+; -7.235  ; \counter_proc:cnt[10] ; \counter_proc:cnt[16] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.902      ;
+; -7.215  ; \counter_proc:cnt[0]  ; \counter_proc:cnt[8]  ; clk          ; clk         ; 1.000        ; 0.000      ; 7.882      ;
+; -7.208  ; \counter_proc:cnt[5]  ; \counter_proc:cnt[10] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.875      ;
+; -7.186  ; \counter_proc:cnt[14] ; \counter_proc:cnt[22] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.853      ;
+; -7.177  ; \counter_proc:cnt[12] ; \counter_proc:cnt[14] ; clk          ; clk         ; 1.000        ; 0.000      ; 7.844      ;
++---------+-----------------------+-----------------------+--------------+-------------+--------------+------------+------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------+
+; Setup: 'flag'                                                                                                              ;
++--------+----------------------+----------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node            ; To Node              ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+----------------------+----------------------+--------------+-------------+--------------+------------+------------+
+; -4.338 ; current_state.TES    ; \worker_proc:gear[1] ; flag         ; flag        ; 1.000        ; 0.000      ; 5.005      ;
+; -4.262 ; \worker_proc:gear[1] ; \worker_proc:gear[1] ; flag         ; flag        ; 1.000        ; 0.000      ; 4.929      ;
+; -4.227 ; \worker_proc:gear[0] ; \worker_proc:gear[1] ; flag         ; flag        ; 1.000        ; 0.000      ; 4.894      ;
+; -4.198 ; current_state.TSW    ; \worker_proc:gear[1] ; flag         ; flag        ; 1.000        ; 0.000      ; 4.865      ;
+; -4.185 ; current_state.GW     ; \worker_proc:gear[1] ; flag         ; flag        ; 1.000        ; 0.000      ; 4.852      ;
+; -4.062 ; current_state.GS     ; \worker_proc:gear[1] ; flag         ; flag        ; 1.000        ; 0.000      ; 4.729      ;
+; -4.019 ; current_state.TWN    ; \worker_proc:gear[1] ; flag         ; flag        ; 1.000        ; 0.000      ; 4.686      ;
+; -3.946 ; \worker_proc:gear[2] ; \worker_proc:gear[1] ; flag         ; flag        ; 1.000        ; 0.000      ; 4.613      ;
+; -3.913 ; current_state.TES    ; \worker_proc:gear[0] ; flag         ; flag        ; 1.000        ; 0.000      ; 4.580      ;
+; -3.848 ; current_state.GE     ; \worker_proc:gear[1] ; flag         ; flag        ; 1.000        ; 0.000      ; 4.515      ;
+; -3.837 ; \worker_proc:gear[1] ; \worker_proc:gear[0] ; flag         ; flag        ; 1.000        ; 0.000      ; 4.504      ;
+; -3.802 ; \worker_proc:gear[0] ; \worker_proc:gear[0] ; flag         ; flag        ; 1.000        ; 0.000      ; 4.469      ;
+; -3.773 ; current_state.TSW    ; \worker_proc:gear[0] ; flag         ; flag        ; 1.000        ; 0.000      ; 4.440      ;
+; -3.760 ; current_state.GW     ; \worker_proc:gear[0] ; flag         ; flag        ; 1.000        ; 0.000      ; 4.427      ;
+; -3.657 ; current_state.TNE    ; \worker_proc:gear[1] ; flag         ; flag        ; 1.000        ; 0.000      ; 4.324      ;
+; -3.637 ; current_state.GS     ; \worker_proc:gear[0] ; flag         ; flag        ; 1.000        ; 0.000      ; 4.304      ;
+; -3.594 ; current_state.TWN    ; \worker_proc:gear[0] ; flag         ; flag        ; 1.000        ; 0.000      ; 4.261      ;
+; -3.521 ; \worker_proc:gear[2] ; \worker_proc:gear[0] ; flag         ; flag        ; 1.000        ; 0.000      ; 4.188      ;
+; -3.485 ; \worker_proc:gear[1] ; current_state.TNE    ; flag         ; flag        ; 1.000        ; 0.000      ; 4.152      ;
+; -3.483 ; current_state.GN     ; \worker_proc:gear[1] ; flag         ; flag        ; 1.000        ; 0.000      ; 4.150      ;
+; -3.458 ; current_state.GN     ; current_state.GN     ; flag         ; flag        ; 1.000        ; 0.000      ; 4.125      ;
+; -3.450 ; \worker_proc:gear[0] ; current_state.TNE    ; flag         ; flag        ; 1.000        ; 0.000      ; 4.117      ;
+; -3.432 ; current_state.GN     ; current_state.TNE    ; flag         ; flag        ; 1.000        ; 0.000      ; 4.099      ;
+; -3.424 ; current_state.GW     ; \worker_proc:gear[2] ; flag         ; flag        ; 1.000        ; 0.000      ; 4.091      ;
+; -3.423 ; current_state.GE     ; \worker_proc:gear[0] ; flag         ; flag        ; 1.000        ; 0.000      ; 4.090      ;
+; -3.324 ; \worker_proc:gear[1] ; current_state.GS     ; flag         ; flag        ; 1.000        ; 0.000      ; 3.991      ;
+; -3.323 ; \worker_proc:gear[1] ; current_state.GN     ; flag         ; flag        ; 1.000        ; 0.000      ; 3.990      ;
+; -3.312 ; \worker_proc:gear[1] ; current_state.GE     ; flag         ; flag        ; 1.000        ; 0.000      ; 3.979      ;
+; -3.312 ; \worker_proc:gear[1] ; current_state.GW     ; flag         ; flag        ; 1.000        ; 0.000      ; 3.979      ;
+; -3.301 ; current_state.GS     ; \worker_proc:gear[2] ; flag         ; flag        ; 1.000        ; 0.000      ; 3.968      ;
+; -3.289 ; \worker_proc:gear[0] ; current_state.GS     ; flag         ; flag        ; 1.000        ; 0.000      ; 3.956      ;
+; -3.288 ; \worker_proc:gear[0] ; current_state.GN     ; flag         ; flag        ; 1.000        ; 0.000      ; 3.955      ;
+; -3.277 ; \worker_proc:gear[0] ; current_state.GE     ; flag         ; flag        ; 1.000        ; 0.000      ; 3.944      ;
+; -3.277 ; \worker_proc:gear[0] ; current_state.GW     ; flag         ; flag        ; 1.000        ; 0.000      ; 3.944      ;
+; -3.232 ; current_state.TNE    ; \worker_proc:gear[0] ; flag         ; flag        ; 1.000        ; 0.000      ; 3.899      ;
+; -3.201 ; \worker_proc:gear[1] ; current_state.TWN    ; flag         ; flag        ; 1.000        ; 0.000      ; 3.868      ;
+; -3.166 ; \worker_proc:gear[0] ; current_state.TWN    ; flag         ; flag        ; 1.000        ; 0.000      ; 3.833      ;
+; -3.090 ; \worker_proc:gear[1] ; current_state.TSW    ; flag         ; flag        ; 1.000        ; 0.000      ; 3.757      ;
+; -3.088 ; \worker_proc:gear[1] ; current_state.TES    ; flag         ; flag        ; 1.000        ; 0.000      ; 3.755      ;
+; -3.087 ; current_state.GE     ; \worker_proc:gear[2] ; flag         ; flag        ; 1.000        ; 0.000      ; 3.754      ;
+; -3.068 ; \worker_proc:gear[2] ; current_state.GS     ; flag         ; flag        ; 1.000        ; 0.000      ; 3.735      ;
+; -3.066 ; \worker_proc:gear[2] ; current_state.GN     ; flag         ; flag        ; 1.000        ; 0.000      ; 3.733      ;
+; -3.058 ; current_state.GN     ; \worker_proc:gear[0] ; flag         ; flag        ; 1.000        ; 0.000      ; 3.725      ;
+; -3.053 ; \worker_proc:gear[2] ; current_state.GW     ; flag         ; flag        ; 1.000        ; 0.000      ; 3.720      ;
+; -3.051 ; \worker_proc:gear[2] ; current_state.GE     ; flag         ; flag        ; 1.000        ; 0.000      ; 3.718      ;
+; -2.974 ; \worker_proc:gear[0] ; current_state.TSW    ; flag         ; flag        ; 1.000        ; 0.000      ; 3.641      ;
+; -2.973 ; \worker_proc:gear[0] ; current_state.TES    ; flag         ; flag        ; 1.000        ; 0.000      ; 3.640      ;
+; -2.920 ; \worker_proc:gear[2] ; current_state.TNE    ; flag         ; flag        ; 1.000        ; 0.000      ; 3.587      ;
+; -2.911 ; \worker_proc:gear[2] ; current_state.TSW    ; flag         ; flag        ; 1.000        ; 0.000      ; 3.578      ;
+; -2.909 ; \worker_proc:gear[2] ; current_state.TES    ; flag         ; flag        ; 1.000        ; 0.000      ; 3.576      ;
+; -2.902 ; \worker_proc:gear[2] ; current_state.TWN    ; flag         ; flag        ; 1.000        ; 0.000      ; 3.569      ;
+; -2.749 ; current_state.GS     ; current_state.GS     ; flag         ; flag        ; 1.000        ; 0.000      ; 3.416      ;
+; -2.723 ; current_state.GE     ; current_state.GE     ; flag         ; flag        ; 1.000        ; 0.000      ; 3.390      ;
+; -2.722 ; current_state.GN     ; \worker_proc:gear[2] ; flag         ; flag        ; 1.000        ; 0.000      ; 3.389      ;
+; -2.717 ; current_state.TES    ; current_state.GS     ; flag         ; flag        ; 1.000        ; 0.000      ; 3.384      ;
+; -2.295 ; current_state.GW     ; current_state.TWN    ; flag         ; flag        ; 1.000        ; 0.000      ; 2.962      ;
+; -2.248 ; current_state.TNE    ; current_state.GE     ; flag         ; flag        ; 1.000        ; 0.000      ; 2.915      ;
+; -2.210 ; current_state.TSW    ; current_state.GW     ; flag         ; flag        ; 1.000        ; 0.000      ; 2.877      ;
+; -2.179 ; current_state.GS     ; current_state.TSW    ; flag         ; flag        ; 1.000        ; 0.000      ; 2.846      ;
+; -2.135 ; current_state.TWN    ; current_state.GN     ; flag         ; flag        ; 1.000        ; 0.000      ; 2.802      ;
+; -2.120 ; current_state.GE     ; current_state.TES    ; flag         ; flag        ; 1.000        ; 0.000      ; 2.787      ;
+; -2.115 ; current_state.GW     ; current_state.GW     ; flag         ; flag        ; 1.000        ; 0.000      ; 2.782      ;
+; -2.096 ; \worker_proc:gear[0] ; \worker_proc:gear[2] ; flag         ; flag        ; 1.000        ; 0.000      ; 2.763      ;
+; -1.862 ; \worker_proc:gear[2] ; \worker_proc:gear[2] ; flag         ; flag        ; 1.000        ; 0.000      ; 2.529      ;
+; -1.795 ; current_state.TES    ; current_state.TES    ; flag         ; flag        ; 1.000        ; 0.000      ; 2.462      ;
+; -1.707 ; current_state.TWN    ; current_state.TWN    ; flag         ; flag        ; 1.000        ; 0.000      ; 2.374      ;
+; -1.706 ; current_state.TSW    ; current_state.TSW    ; flag         ; flag        ; 1.000        ; 0.000      ; 2.373      ;
+; -1.611 ; \worker_proc:gear[1] ; \worker_proc:gear[2] ; flag         ; flag        ; 1.000        ; 0.000      ; 2.278      ;
+; -1.240 ; current_state.TNE    ; current_state.TNE    ; flag         ; flag        ; 1.000        ; 0.000      ; 1.907      ;
++--------+----------------------+----------------------+--------------+-------------+--------------+------------+------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------+
+; Hold: 'clk'                                                                                                                  ;
++--------+-----------------------+-----------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node             ; To Node               ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+-----------------------+-----------------------+--------------+-------------+--------------+------------+------------+
+; -2.997 ; flag                  ; flag                  ; flag         ; clk         ; 0.000        ; 3.699      ; 1.299      ;
+; -2.497 ; flag                  ; flag                  ; flag         ; clk         ; -0.500       ; 3.699      ; 1.299      ;
+; 2.847  ; \counter_proc:cnt[3]  ; \counter_proc:cnt[3]  ; clk          ; clk         ; 0.000        ; 0.000      ; 3.068      ;
+; 3.089  ; \counter_proc:cnt[1]  ; \counter_proc:cnt[1]  ; clk          ; clk         ; 0.000        ; 0.000      ; 3.310      ;
+; 3.646  ; \counter_proc:cnt[24] ; \counter_proc:cnt[24] ; clk          ; clk         ; 0.000        ; 0.000      ; 3.867      ;
+; 3.820  ; \counter_proc:cnt[19] ; \counter_proc:cnt[19] ; clk          ; clk         ; 0.000        ; 0.000      ; 4.041      ;
+; 3.904  ; \counter_proc:cnt[25] ; \counter_proc:cnt[25] ; clk          ; clk         ; 0.000        ; 0.000      ; 4.125      ;
+; 4.060  ; \counter_proc:cnt[1]  ; \counter_proc:cnt[3]  ; clk          ; clk         ; 0.000        ; 0.000      ; 4.281      ;
+; 4.478  ; \counter_proc:cnt[21] ; \counter_proc:cnt[21] ; clk          ; clk         ; 0.000        ; 0.000      ; 4.699      ;
+; 4.529  ; \counter_proc:cnt[20] ; \counter_proc:cnt[20] ; clk          ; clk         ; 0.000        ; 0.000      ; 4.750      ;
+; 4.701  ; \counter_proc:cnt[24] ; \counter_proc:cnt[25] ; clk          ; clk         ; 0.000        ; 0.000      ; 4.922      ;
+; 4.765  ; \counter_proc:cnt[23] ; \counter_proc:cnt[23] ; clk          ; clk         ; 0.000        ; 0.000      ; 4.986      ;
+; 4.871  ; \counter_proc:cnt[22] ; \counter_proc:cnt[22] ; clk          ; clk         ; 0.000        ; 0.000      ; 5.092      ;
+; 4.913  ; \counter_proc:cnt[19] ; \counter_proc:cnt[20] ; clk          ; clk         ; 0.000        ; 0.000      ; 5.134      ;
+; 4.914  ; \counter_proc:cnt[3]  ; \counter_proc:cnt[5]  ; clk          ; clk         ; 0.000        ; 0.000      ; 5.135      ;
+; 4.928  ; \counter_proc:cnt[13] ; \counter_proc:cnt[13] ; clk          ; clk         ; 0.000        ; 0.000      ; 5.149      ;
+; 5.016  ; \counter_proc:cnt[19] ; \counter_proc:cnt[21] ; clk          ; clk         ; 0.000        ; 0.000      ; 5.237      ;
+; 5.041  ; \counter_proc:cnt[0]  ; \counter_proc:cnt[1]  ; clk          ; clk         ; 0.000        ; 0.000      ; 5.262      ;
+; 5.071  ; \counter_proc:cnt[0]  ; \counter_proc:cnt[0]  ; clk          ; clk         ; 0.000        ; 0.000      ; 5.292      ;
+; 5.142  ; \counter_proc:cnt[3]  ; \counter_proc:cnt[4]  ; clk          ; clk         ; 0.000        ; 0.000      ; 5.363      ;
+; 5.202  ; \counter_proc:cnt[5]  ; \counter_proc:cnt[5]  ; clk          ; clk         ; 0.000        ; 0.000      ; 5.423      ;
+; 5.209  ; \counter_proc:cnt[1]  ; \counter_proc:cnt[5]  ; clk          ; clk         ; 0.000        ; 0.000      ; 5.430      ;
+; 5.302  ; \counter_proc:cnt[19] ; \counter_proc:cnt[24] ; clk          ; clk         ; 0.000        ; 0.000      ; 5.523      ;
+; 5.316  ; \counter_proc:cnt[0]  ; \counter_proc:cnt[3]  ; clk          ; clk         ; 0.000        ; 0.000      ; 5.537      ;
+; 5.328  ; \counter_proc:cnt[20] ; \counter_proc:cnt[21] ; clk          ; clk         ; 0.000        ; 0.000      ; 5.549      ;
+; 5.359  ; \counter_proc:cnt[23] ; \counter_proc:cnt[24] ; clk          ; clk         ; 0.000        ; 0.000      ; 5.580      ;
+; 5.406  ; \counter_proc:cnt[19] ; \counter_proc:cnt[22] ; clk          ; clk         ; 0.000        ; 0.000      ; 5.627      ;
+; 5.435  ; \counter_proc:cnt[9]  ; \counter_proc:cnt[9]  ; clk          ; clk         ; 0.000        ; 0.000      ; 5.656      ;
+; 5.460  ; \counter_proc:cnt[21] ; \counter_proc:cnt[24] ; clk          ; clk         ; 0.000        ; 0.000      ; 5.681      ;
+; 5.533  ; \counter_proc:cnt[22] ; \counter_proc:cnt[24] ; clk          ; clk         ; 0.000        ; 0.000      ; 5.754      ;
+; 5.548  ; \counter_proc:cnt[1]  ; \counter_proc:cnt[4]  ; clk          ; clk         ; 0.000        ; 0.000      ; 5.769      ;
+; 5.550  ; \counter_proc:cnt[19] ; \counter_proc:cnt[25] ; clk          ; clk         ; 0.000        ; 0.000      ; 5.771      ;
+; 5.564  ; \counter_proc:cnt[21] ; \counter_proc:cnt[22] ; clk          ; clk         ; 0.000        ; 0.000      ; 5.785      ;
+; 5.571  ; \counter_proc:cnt[19] ; \counter_proc:cnt[23] ; clk          ; clk         ; 0.000        ; 0.000      ; 5.792      ;
+; 5.614  ; \counter_proc:cnt[20] ; \counter_proc:cnt[24] ; clk          ; clk         ; 0.000        ; 0.000      ; 5.835      ;
+; 5.665  ; \counter_proc:cnt[1]  ; \counter_proc:cnt[24] ; clk          ; clk         ; 0.000        ; 0.000      ; 5.886      ;
+; 5.672  ; \counter_proc:cnt[3]  ; \counter_proc:cnt[6]  ; clk          ; clk         ; 0.000        ; 0.000      ; 5.893      ;
+; 5.672  ; \counter_proc:cnt[1]  ; \counter_proc:cnt[13] ; clk          ; clk         ; 0.000        ; 0.000      ; 5.893      ;
+; 5.688  ; \counter_proc:cnt[3]  ; \counter_proc:cnt[7]  ; clk          ; clk         ; 0.000        ; 0.000      ; 5.909      ;
+; 5.701  ; \counter_proc:cnt[2]  ; \counter_proc:cnt[3]  ; clk          ; clk         ; 0.000        ; 0.000      ; 5.922      ;
+; 5.704  ; \counter_proc:cnt[1]  ; \counter_proc:cnt[19] ; clk          ; clk         ; 0.000        ; 0.000      ; 5.925      ;
+; 5.708  ; \counter_proc:cnt[21] ; \counter_proc:cnt[25] ; clk          ; clk         ; 0.000        ; 0.000      ; 5.929      ;
+; 5.718  ; \counter_proc:cnt[23] ; \counter_proc:cnt[25] ; clk          ; clk         ; 0.000        ; 0.000      ; 5.939      ;
+; 5.718  ; \counter_proc:cnt[20] ; \counter_proc:cnt[22] ; clk          ; clk         ; 0.000        ; 0.000      ; 5.939      ;
+; 5.729  ; \counter_proc:cnt[21] ; \counter_proc:cnt[23] ; clk          ; clk         ; 0.000        ; 0.000      ; 5.950      ;
+; 5.737  ; \counter_proc:cnt[8]  ; \counter_proc:cnt[8]  ; clk          ; clk         ; 0.000        ; 0.000      ; 5.958      ;
+; 5.761  ; \counter_proc:cnt[1]  ; \counter_proc:cnt[7]  ; clk          ; clk         ; 0.000        ; 0.000      ; 5.982      ;
+; 5.781  ; \counter_proc:cnt[22] ; \counter_proc:cnt[25] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.002      ;
+; 5.801  ; \counter_proc:cnt[3]  ; \counter_proc:cnt[24] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.022      ;
+; 5.802  ; \counter_proc:cnt[22] ; \counter_proc:cnt[23] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.023      ;
+; 5.808  ; \counter_proc:cnt[3]  ; \counter_proc:cnt[13] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.029      ;
+; 5.816  ; \counter_proc:cnt[18] ; \counter_proc:cnt[19] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.037      ;
+; 5.827  ; \counter_proc:cnt[6]  ; \counter_proc:cnt[6]  ; clk          ; clk         ; 0.000        ; 0.000      ; 6.048      ;
+; 5.840  ; \counter_proc:cnt[3]  ; \counter_proc:cnt[19] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.061      ;
+; 5.856  ; \counter_proc:cnt[17] ; \counter_proc:cnt[17] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.077      ;
+; 5.856  ; \counter_proc:cnt[1]  ; \counter_proc:cnt[6]  ; clk          ; clk         ; 0.000        ; 0.000      ; 6.077      ;
+; 5.862  ; \counter_proc:cnt[20] ; \counter_proc:cnt[25] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.083      ;
+; 5.872  ; \counter_proc:cnt[12] ; \counter_proc:cnt[12] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.093      ;
+; 5.877  ; \counter_proc:cnt[1]  ; \counter_proc:cnt[2]  ; clk          ; clk         ; 0.000        ; 0.000      ; 6.098      ;
+; 5.883  ; \counter_proc:cnt[20] ; \counter_proc:cnt[23] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.104      ;
+; 5.911  ; \counter_proc:cnt[4]  ; \counter_proc:cnt[4]  ; clk          ; clk         ; 0.000        ; 0.000      ; 6.132      ;
+; 5.913  ; \counter_proc:cnt[1]  ; \counter_proc:cnt[25] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.134      ;
+; 5.926  ; \counter_proc:cnt[1]  ; \counter_proc:cnt[21] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.147      ;
+; 5.934  ; \counter_proc:cnt[1]  ; \counter_proc:cnt[20] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.155      ;
+; 5.934  ; \counter_proc:cnt[1]  ; \counter_proc:cnt[23] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.155      ;
+; 5.965  ; \counter_proc:cnt[10] ; \counter_proc:cnt[10] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.186      ;
+; 6.049  ; \counter_proc:cnt[3]  ; \counter_proc:cnt[25] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.270      ;
+; 6.062  ; \counter_proc:cnt[15] ; \counter_proc:cnt[24] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.283      ;
+; 6.062  ; \counter_proc:cnt[3]  ; \counter_proc:cnt[21] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.283      ;
+; 6.070  ; \counter_proc:cnt[3]  ; \counter_proc:cnt[20] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.291      ;
+; 6.070  ; \counter_proc:cnt[3]  ; \counter_proc:cnt[23] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.291      ;
+; 6.070  ; \counter_proc:cnt[16] ; \counter_proc:cnt[24] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.291      ;
+; 6.101  ; \counter_proc:cnt[15] ; \counter_proc:cnt[19] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.322      ;
+; 6.109  ; \counter_proc:cnt[16] ; \counter_proc:cnt[19] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.330      ;
+; 6.118  ; \counter_proc:cnt[16] ; \counter_proc:cnt[16] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.339      ;
+; 6.145  ; \counter_proc:cnt[15] ; \counter_proc:cnt[15] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.366      ;
+; 6.150  ; \counter_proc:cnt[17] ; \counter_proc:cnt[24] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.371      ;
+; 6.157  ; \counter_proc:cnt[18] ; \counter_proc:cnt[20] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.378      ;
+; 6.189  ; \counter_proc:cnt[17] ; \counter_proc:cnt[19] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.410      ;
+; 6.204  ; \counter_proc:cnt[1]  ; \counter_proc:cnt[9]  ; clk          ; clk         ; 0.000        ; 0.000      ; 6.425      ;
+; 6.205  ; \counter_proc:cnt[1]  ; \counter_proc:cnt[22] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.426      ;
+; 6.250  ; \counter_proc:cnt[12] ; \counter_proc:cnt[24] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.471      ;
+; 6.257  ; \counter_proc:cnt[12] ; \counter_proc:cnt[13] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.478      ;
+; 6.260  ; \counter_proc:cnt[18] ; \counter_proc:cnt[21] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.481      ;
+; 6.269  ; \counter_proc:cnt[7]  ; \counter_proc:cnt[7]  ; clk          ; clk         ; 0.000        ; 0.000      ; 6.490      ;
+; 6.270  ; \counter_proc:cnt[13] ; \counter_proc:cnt[24] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.491      ;
+; 6.289  ; \counter_proc:cnt[12] ; \counter_proc:cnt[19] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.510      ;
+; 6.309  ; \counter_proc:cnt[13] ; \counter_proc:cnt[19] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.530      ;
+; 6.310  ; \counter_proc:cnt[15] ; \counter_proc:cnt[25] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.531      ;
+; 6.318  ; \counter_proc:cnt[16] ; \counter_proc:cnt[25] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.539      ;
+; 6.323  ; \counter_proc:cnt[15] ; \counter_proc:cnt[21] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.544      ;
+; 6.327  ; \counter_proc:cnt[1]  ; \counter_proc:cnt[17] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.548      ;
+; 6.329  ; \counter_proc:cnt[11] ; \counter_proc:cnt[24] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.550      ;
+; 6.331  ; \counter_proc:cnt[15] ; \counter_proc:cnt[20] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.552      ;
+; 6.331  ; \counter_proc:cnt[15] ; \counter_proc:cnt[23] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.552      ;
+; 6.331  ; \counter_proc:cnt[16] ; \counter_proc:cnt[21] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.552      ;
+; 6.336  ; \counter_proc:cnt[11] ; \counter_proc:cnt[13] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.557      ;
+; 6.339  ; \counter_proc:cnt[16] ; \counter_proc:cnt[20] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.560      ;
+; 6.339  ; \counter_proc:cnt[16] ; \counter_proc:cnt[23] ; clk          ; clk         ; 0.000        ; 0.000      ; 6.560      ;
+; 6.340  ; \counter_proc:cnt[3]  ; \counter_proc:cnt[9]  ; clk          ; clk         ; 0.000        ; 0.000      ; 6.561      ;
++--------+-----------------------+-----------------------+--------------+-------------+--------------+------------+------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Hold: 'flag'                                                                                                              ;
++-------+----------------------+----------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node            ; To Node              ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+----------------------+----------------------+--------------+-------------+--------------+------------+------------+
+; 1.686 ; current_state.TNE    ; current_state.TNE    ; flag         ; flag        ; 0.000        ; 0.000      ; 1.907      ;
+; 1.948 ; \worker_proc:gear[1] ; \worker_proc:gear[1] ; flag         ; flag        ; 0.000        ; 0.000      ; 2.169      ;
+; 1.994 ; \worker_proc:gear[0] ; \worker_proc:gear[0] ; flag         ; flag        ; 0.000        ; 0.000      ; 2.215      ;
+; 2.057 ; \worker_proc:gear[1] ; \worker_proc:gear[2] ; flag         ; flag        ; 0.000        ; 0.000      ; 2.278      ;
+; 2.152 ; current_state.TSW    ; current_state.TSW    ; flag         ; flag        ; 0.000        ; 0.000      ; 2.373      ;
+; 2.153 ; current_state.TWN    ; current_state.TWN    ; flag         ; flag        ; 0.000        ; 0.000      ; 2.374      ;
+; 2.241 ; current_state.TES    ; current_state.TES    ; flag         ; flag        ; 0.000        ; 0.000      ; 2.462      ;
+; 2.308 ; \worker_proc:gear[2] ; \worker_proc:gear[2] ; flag         ; flag        ; 0.000        ; 0.000      ; 2.529      ;
+; 2.323 ; \worker_proc:gear[0] ; \worker_proc:gear[1] ; flag         ; flag        ; 0.000        ; 0.000      ; 2.544      ;
+; 2.542 ; \worker_proc:gear[0] ; \worker_proc:gear[2] ; flag         ; flag        ; 0.000        ; 0.000      ; 2.763      ;
+; 2.561 ; current_state.GW     ; current_state.GW     ; flag         ; flag        ; 0.000        ; 0.000      ; 2.782      ;
+; 2.566 ; current_state.GE     ; current_state.TES    ; flag         ; flag        ; 0.000        ; 0.000      ; 2.787      ;
+; 2.581 ; current_state.TWN    ; current_state.GN     ; flag         ; flag        ; 0.000        ; 0.000      ; 2.802      ;
+; 2.625 ; current_state.GS     ; current_state.TSW    ; flag         ; flag        ; 0.000        ; 0.000      ; 2.846      ;
+; 2.656 ; current_state.TSW    ; current_state.GW     ; flag         ; flag        ; 0.000        ; 0.000      ; 2.877      ;
+; 2.694 ; current_state.TNE    ; current_state.GE     ; flag         ; flag        ; 0.000        ; 0.000      ; 2.915      ;
+; 2.741 ; current_state.GW     ; current_state.TWN    ; flag         ; flag        ; 0.000        ; 0.000      ; 2.962      ;
+; 3.163 ; current_state.TES    ; current_state.GS     ; flag         ; flag        ; 0.000        ; 0.000      ; 3.384      ;
+; 3.168 ; current_state.GN     ; \worker_proc:gear[2] ; flag         ; flag        ; 0.000        ; 0.000      ; 3.389      ;
+; 3.169 ; current_state.GE     ; current_state.GE     ; flag         ; flag        ; 0.000        ; 0.000      ; 3.390      ;
+; 3.195 ; current_state.GS     ; current_state.GS     ; flag         ; flag        ; 0.000        ; 0.000      ; 3.416      ;
+; 3.348 ; \worker_proc:gear[2] ; current_state.TWN    ; flag         ; flag        ; 0.000        ; 0.000      ; 3.569      ;
+; 3.355 ; \worker_proc:gear[2] ; current_state.TES    ; flag         ; flag        ; 0.000        ; 0.000      ; 3.576      ;
+; 3.357 ; \worker_proc:gear[2] ; current_state.TSW    ; flag         ; flag        ; 0.000        ; 0.000      ; 3.578      ;
+; 3.366 ; \worker_proc:gear[2] ; current_state.TNE    ; flag         ; flag        ; 0.000        ; 0.000      ; 3.587      ;
+; 3.384 ; \worker_proc:gear[0] ; current_state.TWN    ; flag         ; flag        ; 0.000        ; 0.000      ; 3.605      ;
+; 3.391 ; \worker_proc:gear[0] ; current_state.TES    ; flag         ; flag        ; 0.000        ; 0.000      ; 3.612      ;
+; 3.393 ; \worker_proc:gear[0] ; current_state.TSW    ; flag         ; flag        ; 0.000        ; 0.000      ; 3.614      ;
+; 3.402 ; \worker_proc:gear[0] ; current_state.TNE    ; flag         ; flag        ; 0.000        ; 0.000      ; 3.623      ;
+; 3.454 ; \worker_proc:gear[1] ; current_state.TES    ; flag         ; flag        ; 0.000        ; 0.000      ; 3.675      ;
+; 3.455 ; \worker_proc:gear[1] ; current_state.TSW    ; flag         ; flag        ; 0.000        ; 0.000      ; 3.676      ;
+; 3.497 ; \worker_proc:gear[2] ; current_state.GE     ; flag         ; flag        ; 0.000        ; 0.000      ; 3.718      ;
+; 3.499 ; \worker_proc:gear[2] ; current_state.GW     ; flag         ; flag        ; 0.000        ; 0.000      ; 3.720      ;
+; 3.504 ; current_state.GN     ; \worker_proc:gear[0] ; flag         ; flag        ; 0.000        ; 0.000      ; 3.725      ;
+; 3.512 ; \worker_proc:gear[2] ; current_state.GN     ; flag         ; flag        ; 0.000        ; 0.000      ; 3.733      ;
+; 3.514 ; \worker_proc:gear[2] ; current_state.GS     ; flag         ; flag        ; 0.000        ; 0.000      ; 3.735      ;
+; 3.527 ; \worker_proc:gear[1] ; current_state.TWN    ; flag         ; flag        ; 0.000        ; 0.000      ; 3.748      ;
+; 3.533 ; current_state.GE     ; \worker_proc:gear[2] ; flag         ; flag        ; 0.000        ; 0.000      ; 3.754      ;
+; 3.533 ; \worker_proc:gear[0] ; current_state.GE     ; flag         ; flag        ; 0.000        ; 0.000      ; 3.754      ;
+; 3.535 ; \worker_proc:gear[0] ; current_state.GW     ; flag         ; flag        ; 0.000        ; 0.000      ; 3.756      ;
+; 3.545 ; \worker_proc:gear[1] ; current_state.TNE    ; flag         ; flag        ; 0.000        ; 0.000      ; 3.766      ;
+; 3.548 ; \worker_proc:gear[0] ; current_state.GN     ; flag         ; flag        ; 0.000        ; 0.000      ; 3.769      ;
+; 3.550 ; \worker_proc:gear[0] ; current_state.GS     ; flag         ; flag        ; 0.000        ; 0.000      ; 3.771      ;
+; 3.676 ; \worker_proc:gear[1] ; current_state.GE     ; flag         ; flag        ; 0.000        ; 0.000      ; 3.897      ;
+; 3.678 ; \worker_proc:gear[1] ; current_state.GW     ; flag         ; flag        ; 0.000        ; 0.000      ; 3.899      ;
+; 3.678 ; current_state.TNE    ; \worker_proc:gear[0] ; flag         ; flag        ; 0.000        ; 0.000      ; 3.899      ;
+; 3.691 ; \worker_proc:gear[1] ; current_state.GN     ; flag         ; flag        ; 0.000        ; 0.000      ; 3.912      ;
+; 3.693 ; \worker_proc:gear[1] ; current_state.GS     ; flag         ; flag        ; 0.000        ; 0.000      ; 3.914      ;
+; 3.747 ; current_state.GS     ; \worker_proc:gear[2] ; flag         ; flag        ; 0.000        ; 0.000      ; 3.968      ;
+; 3.869 ; current_state.GE     ; \worker_proc:gear[0] ; flag         ; flag        ; 0.000        ; 0.000      ; 4.090      ;
+; 3.870 ; current_state.GW     ; \worker_proc:gear[2] ; flag         ; flag        ; 0.000        ; 0.000      ; 4.091      ;
+; 3.878 ; current_state.GN     ; current_state.TNE    ; flag         ; flag        ; 0.000        ; 0.000      ; 4.099      ;
+; 3.904 ; current_state.GN     ; current_state.GN     ; flag         ; flag        ; 0.000        ; 0.000      ; 4.125      ;
+; 3.929 ; current_state.GN     ; \worker_proc:gear[1] ; flag         ; flag        ; 0.000        ; 0.000      ; 4.150      ;
+; 3.967 ; \worker_proc:gear[2] ; \worker_proc:gear[0] ; flag         ; flag        ; 0.000        ; 0.000      ; 4.188      ;
+; 4.040 ; current_state.TWN    ; \worker_proc:gear[0] ; flag         ; flag        ; 0.000        ; 0.000      ; 4.261      ;
+; 4.083 ; current_state.GS     ; \worker_proc:gear[0] ; flag         ; flag        ; 0.000        ; 0.000      ; 4.304      ;
+; 4.103 ; current_state.TNE    ; \worker_proc:gear[1] ; flag         ; flag        ; 0.000        ; 0.000      ; 4.324      ;
+; 4.146 ; \worker_proc:gear[1] ; \worker_proc:gear[0] ; flag         ; flag        ; 0.000        ; 0.000      ; 4.367      ;
+; 4.206 ; current_state.GW     ; \worker_proc:gear[0] ; flag         ; flag        ; 0.000        ; 0.000      ; 4.427      ;
+; 4.219 ; current_state.TSW    ; \worker_proc:gear[0] ; flag         ; flag        ; 0.000        ; 0.000      ; 4.440      ;
+; 4.294 ; current_state.GE     ; \worker_proc:gear[1] ; flag         ; flag        ; 0.000        ; 0.000      ; 4.515      ;
+; 4.359 ; current_state.TES    ; \worker_proc:gear[0] ; flag         ; flag        ; 0.000        ; 0.000      ; 4.580      ;
+; 4.392 ; \worker_proc:gear[2] ; \worker_proc:gear[1] ; flag         ; flag        ; 0.000        ; 0.000      ; 4.613      ;
+; 4.465 ; current_state.TWN    ; \worker_proc:gear[1] ; flag         ; flag        ; 0.000        ; 0.000      ; 4.686      ;
+; 4.508 ; current_state.GS     ; \worker_proc:gear[1] ; flag         ; flag        ; 0.000        ; 0.000      ; 4.729      ;
+; 4.631 ; current_state.GW     ; \worker_proc:gear[1] ; flag         ; flag        ; 0.000        ; 0.000      ; 4.852      ;
+; 4.644 ; current_state.TSW    ; \worker_proc:gear[1] ; flag         ; flag        ; 0.000        ; 0.000      ; 4.865      ;
+; 4.784 ; current_state.TES    ; \worker_proc:gear[1] ; flag         ; flag        ; 0.000        ; 0.000      ; 5.005      ;
++-------+----------------------+----------------------+--------------+-------------+--------------+------------+------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Recovery: 'clk'                                                                                                               ;
++---------+-----------------------+-----------------------+--------------+-------------+--------------+------------+------------+
+; Slack   ; From Node             ; To Node               ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++---------+-----------------------+-----------------------+--------------+-------------+--------------+------------+------------+
+; -11.813 ; \counter_proc:cnt[10] ; \counter_proc:cnt[25] ; clk          ; clk         ; 1.000        ; 0.000      ; 12.480     ;
+; -11.813 ; \counter_proc:cnt[10] ; \counter_proc:cnt[23] ; clk          ; clk         ; 1.000        ; 0.000      ; 12.480     ;
+; -11.813 ; \counter_proc:cnt[10] ; \counter_proc:cnt[24] ; clk          ; clk         ; 1.000        ; 0.000      ; 12.480     ;
+; -11.813 ; \counter_proc:cnt[10] ; \counter_proc:cnt[0]  ; clk          ; clk         ; 1.000        ; 0.000      ; 12.480     ;
+; -11.813 ; \counter_proc:cnt[10] ; \counter_proc:cnt[21] ; clk          ; clk         ; 1.000        ; 0.000      ; 12.480     ;
+; -11.813 ; \counter_proc:cnt[10] ; \counter_proc:cnt[20] ; clk          ; clk         ; 1.000        ; 0.000      ; 12.480     ;
+; -11.813 ; \counter_proc:cnt[10] ; \counter_proc:cnt[19] ; clk          ; clk         ; 1.000        ; 0.000      ; 12.480     ;
+; -11.813 ; \counter_proc:cnt[10] ; \counter_proc:cnt[22] ; clk          ; clk         ; 1.000        ; 0.000      ; 12.480     ;
+; -11.813 ; \counter_proc:cnt[10] ; \counter_proc:cnt[15] ; clk          ; clk         ; 1.000        ; 0.000      ; 12.480     ;
+; -11.813 ; \counter_proc:cnt[10] ; \counter_proc:cnt[18] ; clk          ; clk         ; 1.000        ; 0.000      ; 12.480     ;
+; -11.813 ; \counter_proc:cnt[10] ; \counter_proc:cnt[16] ; clk          ; clk         ; 1.000        ; 0.000      ; 12.480     ;
+; -11.813 ; \counter_proc:cnt[10] ; \counter_proc:cnt[17] ; clk          ; clk         ; 1.000        ; 0.000      ; 12.480     ;
+; -11.813 ; \counter_proc:cnt[10] ; \counter_proc:cnt[13] ; clk          ; clk         ; 1.000        ; 0.000      ; 12.480     ;
+; -11.813 ; \counter_proc:cnt[10] ; \counter_proc:cnt[12] ; clk          ; clk         ; 1.000        ; 0.000      ; 12.480     ;
+; -11.813 ; \counter_proc:cnt[10] ; \counter_proc:cnt[11] ; clk          ; clk         ; 1.000        ; 0.000      ; 12.480     ;
+; -11.813 ; \counter_proc:cnt[10] ; \counter_proc:cnt[14] ; clk          ; clk         ; 1.000        ; 0.000      ; 12.480     ;
+; -11.813 ; \counter_proc:cnt[10] ; \counter_proc:cnt[10] ; clk          ; clk         ; 1.000        ; 0.000      ; 12.480     ;
+; -11.813 ; \counter_proc:cnt[10] ; \counter_proc:cnt[9]  ; clk          ; clk         ; 1.000        ; 0.000      ; 12.480     ;
+; -11.813 ; \counter_proc:cnt[10] ; \counter_proc:cnt[8]  ; clk          ; clk         ; 1.000        ; 0.000      ; 12.480     ;
+; -11.813 ; \counter_proc:cnt[10] ; \counter_proc:cnt[7]  ; clk          ; clk         ; 1.000        ; 0.000      ; 12.480     ;
+; -11.813 ; \counter_proc:cnt[10] ; \counter_proc:cnt[5]  ; clk          ; clk         ; 1.000        ; 0.000      ; 12.480     ;
+; -11.813 ; \counter_proc:cnt[10] ; \counter_proc:cnt[4]  ; clk          ; clk         ; 1.000        ; 0.000      ; 12.480     ;
+; -11.813 ; \counter_proc:cnt[10] ; \counter_proc:cnt[3]  ; clk          ; clk         ; 1.000        ; 0.000      ; 12.480     ;
+; -11.813 ; \counter_proc:cnt[10] ; \counter_proc:cnt[6]  ; clk          ; clk         ; 1.000        ; 0.000      ; 12.480     ;
+; -11.813 ; \counter_proc:cnt[10] ; \counter_proc:cnt[1]  ; clk          ; clk         ; 1.000        ; 0.000      ; 12.480     ;
+; -11.813 ; \counter_proc:cnt[10] ; \counter_proc:cnt[2]  ; clk          ; clk         ; 1.000        ; 0.000      ; 12.480     ;
+; -11.790 ; \counter_proc:cnt[8]  ; \counter_proc:cnt[25] ; clk          ; clk         ; 1.000        ; 0.000      ; 12.457     ;
+; -11.790 ; \counter_proc:cnt[8]  ; \counter_proc:cnt[23] ; clk          ; clk         ; 1.000        ; 0.000      ; 12.457     ;
+; -11.790 ; \counter_proc:cnt[8]  ; \counter_proc:cnt[24] ; clk          ; clk         ; 1.000        ; 0.000      ; 12.457     ;
+; -11.790 ; \counter_proc:cnt[8]  ; \counter_proc:cnt[0]  ; clk          ; clk         ; 1.000        ; 0.000      ; 12.457     ;
+; -11.790 ; \counter_proc:cnt[8]  ; \counter_proc:cnt[21] ; clk          ; clk         ; 1.000        ; 0.000      ; 12.457     ;
+; -11.790 ; \counter_proc:cnt[8]  ; \counter_proc:cnt[20] ; clk          ; clk         ; 1.000        ; 0.000      ; 12.457     ;
+; -11.790 ; \counter_proc:cnt[8]  ; \counter_proc:cnt[19] ; clk          ; clk         ; 1.000        ; 0.000      ; 12.457     ;
+; -11.790 ; \counter_proc:cnt[8]  ; \counter_proc:cnt[22] ; clk          ; clk         ; 1.000        ; 0.000      ; 12.457     ;
+; -11.790 ; \counter_proc:cnt[8]  ; \counter_proc:cnt[15] ; clk          ; clk         ; 1.000        ; 0.000      ; 12.457     ;
+; -11.790 ; \counter_proc:cnt[8]  ; \counter_proc:cnt[18] ; clk          ; clk         ; 1.000        ; 0.000      ; 12.457     ;
+; -11.790 ; \counter_proc:cnt[8]  ; \counter_proc:cnt[16] ; clk          ; clk         ; 1.000        ; 0.000      ; 12.457     ;
+; -11.790 ; \counter_proc:cnt[8]  ; \counter_proc:cnt[17] ; clk          ; clk         ; 1.000        ; 0.000      ; 12.457     ;
+; -11.790 ; \counter_proc:cnt[8]  ; \counter_proc:cnt[13] ; clk          ; clk         ; 1.000        ; 0.000      ; 12.457     ;
+; -11.790 ; \counter_proc:cnt[8]  ; \counter_proc:cnt[12] ; clk          ; clk         ; 1.000        ; 0.000      ; 12.457     ;
+; -11.790 ; \counter_proc:cnt[8]  ; \counter_proc:cnt[11] ; clk          ; clk         ; 1.000        ; 0.000      ; 12.457     ;
+; -11.790 ; \counter_proc:cnt[8]  ; \counter_proc:cnt[14] ; clk          ; clk         ; 1.000        ; 0.000      ; 12.457     ;
+; -11.790 ; \counter_proc:cnt[8]  ; \counter_proc:cnt[10] ; clk          ; clk         ; 1.000        ; 0.000      ; 12.457     ;
+; -11.790 ; \counter_proc:cnt[8]  ; \counter_proc:cnt[9]  ; clk          ; clk         ; 1.000        ; 0.000      ; 12.457     ;
+; -11.790 ; \counter_proc:cnt[8]  ; \counter_proc:cnt[8]  ; clk          ; clk         ; 1.000        ; 0.000      ; 12.457     ;
+; -11.790 ; \counter_proc:cnt[8]  ; \counter_proc:cnt[7]  ; clk          ; clk         ; 1.000        ; 0.000      ; 12.457     ;
+; -11.790 ; \counter_proc:cnt[8]  ; \counter_proc:cnt[5]  ; clk          ; clk         ; 1.000        ; 0.000      ; 12.457     ;
+; -11.790 ; \counter_proc:cnt[8]  ; \counter_proc:cnt[4]  ; clk          ; clk         ; 1.000        ; 0.000      ; 12.457     ;
+; -11.790 ; \counter_proc:cnt[8]  ; \counter_proc:cnt[3]  ; clk          ; clk         ; 1.000        ; 0.000      ; 12.457     ;
+; -11.790 ; \counter_proc:cnt[8]  ; \counter_proc:cnt[6]  ; clk          ; clk         ; 1.000        ; 0.000      ; 12.457     ;
+; -11.790 ; \counter_proc:cnt[8]  ; \counter_proc:cnt[1]  ; clk          ; clk         ; 1.000        ; 0.000      ; 12.457     ;
+; -11.790 ; \counter_proc:cnt[8]  ; \counter_proc:cnt[2]  ; clk          ; clk         ; 1.000        ; 0.000      ; 12.457     ;
+; -11.285 ; \counter_proc:cnt[24] ; \counter_proc:cnt[25] ; clk          ; clk         ; 1.000        ; 0.000      ; 11.952     ;
+; -11.285 ; \counter_proc:cnt[24] ; \counter_proc:cnt[23] ; clk          ; clk         ; 1.000        ; 0.000      ; 11.952     ;
+; -11.285 ; \counter_proc:cnt[24] ; \counter_proc:cnt[24] ; clk          ; clk         ; 1.000        ; 0.000      ; 11.952     ;
+; -11.285 ; \counter_proc:cnt[24] ; \counter_proc:cnt[0]  ; clk          ; clk         ; 1.000        ; 0.000      ; 11.952     ;
+; -11.285 ; \counter_proc:cnt[24] ; \counter_proc:cnt[21] ; clk          ; clk         ; 1.000        ; 0.000      ; 11.952     ;
+; -11.285 ; \counter_proc:cnt[24] ; \counter_proc:cnt[20] ; clk          ; clk         ; 1.000        ; 0.000      ; 11.952     ;
+; -11.285 ; \counter_proc:cnt[24] ; \counter_proc:cnt[19] ; clk          ; clk         ; 1.000        ; 0.000      ; 11.952     ;
+; -11.285 ; \counter_proc:cnt[24] ; \counter_proc:cnt[22] ; clk          ; clk         ; 1.000        ; 0.000      ; 11.952     ;
+; -11.285 ; \counter_proc:cnt[24] ; \counter_proc:cnt[15] ; clk          ; clk         ; 1.000        ; 0.000      ; 11.952     ;
+; -11.285 ; \counter_proc:cnt[24] ; \counter_proc:cnt[18] ; clk          ; clk         ; 1.000        ; 0.000      ; 11.952     ;
+; -11.285 ; \counter_proc:cnt[24] ; \counter_proc:cnt[16] ; clk          ; clk         ; 1.000        ; 0.000      ; 11.952     ;
+; -11.285 ; \counter_proc:cnt[24] ; \counter_proc:cnt[17] ; clk          ; clk         ; 1.000        ; 0.000      ; 11.952     ;
+; -11.285 ; \counter_proc:cnt[24] ; \counter_proc:cnt[13] ; clk          ; clk         ; 1.000        ; 0.000      ; 11.952     ;
+; -11.285 ; \counter_proc:cnt[24] ; \counter_proc:cnt[12] ; clk          ; clk         ; 1.000        ; 0.000      ; 11.952     ;
+; -11.285 ; \counter_proc:cnt[24] ; \counter_proc:cnt[11] ; clk          ; clk         ; 1.000        ; 0.000      ; 11.952     ;
+; -11.285 ; \counter_proc:cnt[24] ; \counter_proc:cnt[14] ; clk          ; clk         ; 1.000        ; 0.000      ; 11.952     ;
+; -11.285 ; \counter_proc:cnt[24] ; \counter_proc:cnt[10] ; clk          ; clk         ; 1.000        ; 0.000      ; 11.952     ;
+; -11.285 ; \counter_proc:cnt[24] ; \counter_proc:cnt[9]  ; clk          ; clk         ; 1.000        ; 0.000      ; 11.952     ;
+; -11.285 ; \counter_proc:cnt[24] ; \counter_proc:cnt[8]  ; clk          ; clk         ; 1.000        ; 0.000      ; 11.952     ;
+; -11.285 ; \counter_proc:cnt[24] ; \counter_proc:cnt[7]  ; clk          ; clk         ; 1.000        ; 0.000      ; 11.952     ;
+; -11.285 ; \counter_proc:cnt[24] ; \counter_proc:cnt[5]  ; clk          ; clk         ; 1.000        ; 0.000      ; 11.952     ;
+; -11.285 ; \counter_proc:cnt[24] ; \counter_proc:cnt[4]  ; clk          ; clk         ; 1.000        ; 0.000      ; 11.952     ;
+; -11.285 ; \counter_proc:cnt[24] ; \counter_proc:cnt[3]  ; clk          ; clk         ; 1.000        ; 0.000      ; 11.952     ;
+; -11.285 ; \counter_proc:cnt[24] ; \counter_proc:cnt[6]  ; clk          ; clk         ; 1.000        ; 0.000      ; 11.952     ;
+; -11.285 ; \counter_proc:cnt[24] ; \counter_proc:cnt[1]  ; clk          ; clk         ; 1.000        ; 0.000      ; 11.952     ;
+; -11.285 ; \counter_proc:cnt[24] ; \counter_proc:cnt[2]  ; clk          ; clk         ; 1.000        ; 0.000      ; 11.952     ;
+; -11.246 ; \counter_proc:cnt[9]  ; \counter_proc:cnt[25] ; clk          ; clk         ; 1.000        ; 0.000      ; 11.913     ;
+; -11.246 ; \counter_proc:cnt[9]  ; \counter_proc:cnt[23] ; clk          ; clk         ; 1.000        ; 0.000      ; 11.913     ;
+; -11.246 ; \counter_proc:cnt[9]  ; \counter_proc:cnt[24] ; clk          ; clk         ; 1.000        ; 0.000      ; 11.913     ;
+; -11.246 ; \counter_proc:cnt[9]  ; \counter_proc:cnt[0]  ; clk          ; clk         ; 1.000        ; 0.000      ; 11.913     ;
+; -11.246 ; \counter_proc:cnt[9]  ; \counter_proc:cnt[21] ; clk          ; clk         ; 1.000        ; 0.000      ; 11.913     ;
+; -11.246 ; \counter_proc:cnt[9]  ; \counter_proc:cnt[20] ; clk          ; clk         ; 1.000        ; 0.000      ; 11.913     ;
+; -11.246 ; \counter_proc:cnt[9]  ; \counter_proc:cnt[19] ; clk          ; clk         ; 1.000        ; 0.000      ; 11.913     ;
+; -11.246 ; \counter_proc:cnt[9]  ; \counter_proc:cnt[22] ; clk          ; clk         ; 1.000        ; 0.000      ; 11.913     ;
+; -11.246 ; \counter_proc:cnt[9]  ; \counter_proc:cnt[15] ; clk          ; clk         ; 1.000        ; 0.000      ; 11.913     ;
+; -11.246 ; \counter_proc:cnt[9]  ; \counter_proc:cnt[18] ; clk          ; clk         ; 1.000        ; 0.000      ; 11.913     ;
+; -11.246 ; \counter_proc:cnt[9]  ; \counter_proc:cnt[16] ; clk          ; clk         ; 1.000        ; 0.000      ; 11.913     ;
+; -11.246 ; \counter_proc:cnt[9]  ; \counter_proc:cnt[17] ; clk          ; clk         ; 1.000        ; 0.000      ; 11.913     ;
+; -11.246 ; \counter_proc:cnt[9]  ; \counter_proc:cnt[13] ; clk          ; clk         ; 1.000        ; 0.000      ; 11.913     ;
+; -11.246 ; \counter_proc:cnt[9]  ; \counter_proc:cnt[12] ; clk          ; clk         ; 1.000        ; 0.000      ; 11.913     ;
+; -11.246 ; \counter_proc:cnt[9]  ; \counter_proc:cnt[11] ; clk          ; clk         ; 1.000        ; 0.000      ; 11.913     ;
+; -11.246 ; \counter_proc:cnt[9]  ; \counter_proc:cnt[14] ; clk          ; clk         ; 1.000        ; 0.000      ; 11.913     ;
+; -11.246 ; \counter_proc:cnt[9]  ; \counter_proc:cnt[10] ; clk          ; clk         ; 1.000        ; 0.000      ; 11.913     ;
+; -11.246 ; \counter_proc:cnt[9]  ; \counter_proc:cnt[9]  ; clk          ; clk         ; 1.000        ; 0.000      ; 11.913     ;
+; -11.246 ; \counter_proc:cnt[9]  ; \counter_proc:cnt[8]  ; clk          ; clk         ; 1.000        ; 0.000      ; 11.913     ;
+; -11.246 ; \counter_proc:cnt[9]  ; \counter_proc:cnt[7]  ; clk          ; clk         ; 1.000        ; 0.000      ; 11.913     ;
+; -11.246 ; \counter_proc:cnt[9]  ; \counter_proc:cnt[5]  ; clk          ; clk         ; 1.000        ; 0.000      ; 11.913     ;
+; -11.246 ; \counter_proc:cnt[9]  ; \counter_proc:cnt[4]  ; clk          ; clk         ; 1.000        ; 0.000      ; 11.913     ;
++---------+-----------------------+-----------------------+--------------+-------------+--------------+------------+------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------+
+; Removal: 'clk'                                                                                                              ;
++-------+-----------------------+-----------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node             ; To Node               ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+-----------------------+-----------------------+--------------+-------------+--------------+------------+------------+
+; 6.289 ; \counter_proc:cnt[2]  ; flag                  ; clk          ; clk         ; 0.000        ; 0.000      ; 6.510      ;
+; 6.794 ; \counter_proc:cnt[6]  ; flag                  ; clk          ; clk         ; 0.000        ; 0.000      ; 7.015      ;
+; 7.750 ; \counter_proc:cnt[7]  ; flag                  ; clk          ; clk         ; 0.000        ; 0.000      ; 7.971      ;
+; 8.015 ; \counter_proc:cnt[14] ; flag                  ; clk          ; clk         ; 0.000        ; 0.000      ; 8.236      ;
+; 8.235 ; \counter_proc:cnt[4]  ; flag                  ; clk          ; clk         ; 0.000        ; 0.000      ; 8.456      ;
+; 8.407 ; \counter_proc:cnt[5]  ; flag                  ; clk          ; clk         ; 0.000        ; 0.000      ; 8.628      ;
+; 8.418 ; \counter_proc:cnt[3]  ; flag                  ; clk          ; clk         ; 0.000        ; 0.000      ; 8.639      ;
+; 8.721 ; \counter_proc:cnt[1]  ; flag                  ; clk          ; clk         ; 0.000        ; 0.000      ; 8.942      ;
+; 8.807 ; \counter_proc:cnt[9]  ; flag                  ; clk          ; clk         ; 0.000        ; 0.000      ; 9.028      ;
+; 8.903 ; \counter_proc:cnt[14] ; \counter_proc:cnt[25] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.124      ;
+; 8.903 ; \counter_proc:cnt[14] ; \counter_proc:cnt[23] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.124      ;
+; 8.903 ; \counter_proc:cnt[14] ; \counter_proc:cnt[24] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.124      ;
+; 8.903 ; \counter_proc:cnt[14] ; \counter_proc:cnt[0]  ; clk          ; clk         ; 0.000        ; 0.000      ; 9.124      ;
+; 8.903 ; \counter_proc:cnt[14] ; \counter_proc:cnt[21] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.124      ;
+; 8.903 ; \counter_proc:cnt[14] ; \counter_proc:cnt[20] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.124      ;
+; 8.903 ; \counter_proc:cnt[14] ; \counter_proc:cnt[19] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.124      ;
+; 8.903 ; \counter_proc:cnt[14] ; \counter_proc:cnt[22] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.124      ;
+; 8.903 ; \counter_proc:cnt[14] ; \counter_proc:cnt[15] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.124      ;
+; 8.903 ; \counter_proc:cnt[14] ; \counter_proc:cnt[18] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.124      ;
+; 8.903 ; \counter_proc:cnt[14] ; \counter_proc:cnt[16] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.124      ;
+; 8.903 ; \counter_proc:cnt[14] ; \counter_proc:cnt[17] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.124      ;
+; 8.903 ; \counter_proc:cnt[14] ; \counter_proc:cnt[13] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.124      ;
+; 8.903 ; \counter_proc:cnt[14] ; \counter_proc:cnt[12] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.124      ;
+; 8.903 ; \counter_proc:cnt[14] ; \counter_proc:cnt[11] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.124      ;
+; 8.903 ; \counter_proc:cnt[14] ; \counter_proc:cnt[14] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.124      ;
+; 8.903 ; \counter_proc:cnt[14] ; \counter_proc:cnt[10] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.124      ;
+; 8.903 ; \counter_proc:cnt[14] ; \counter_proc:cnt[9]  ; clk          ; clk         ; 0.000        ; 0.000      ; 9.124      ;
+; 8.903 ; \counter_proc:cnt[14] ; \counter_proc:cnt[8]  ; clk          ; clk         ; 0.000        ; 0.000      ; 9.124      ;
+; 8.903 ; \counter_proc:cnt[14] ; \counter_proc:cnt[7]  ; clk          ; clk         ; 0.000        ; 0.000      ; 9.124      ;
+; 8.903 ; \counter_proc:cnt[14] ; \counter_proc:cnt[5]  ; clk          ; clk         ; 0.000        ; 0.000      ; 9.124      ;
+; 8.903 ; \counter_proc:cnt[14] ; \counter_proc:cnt[4]  ; clk          ; clk         ; 0.000        ; 0.000      ; 9.124      ;
+; 8.903 ; \counter_proc:cnt[14] ; \counter_proc:cnt[3]  ; clk          ; clk         ; 0.000        ; 0.000      ; 9.124      ;
+; 8.903 ; \counter_proc:cnt[14] ; \counter_proc:cnt[6]  ; clk          ; clk         ; 0.000        ; 0.000      ; 9.124      ;
+; 8.903 ; \counter_proc:cnt[14] ; \counter_proc:cnt[1]  ; clk          ; clk         ; 0.000        ; 0.000      ; 9.124      ;
+; 8.903 ; \counter_proc:cnt[14] ; \counter_proc:cnt[2]  ; clk          ; clk         ; 0.000        ; 0.000      ; 9.124      ;
+; 9.052 ; \counter_proc:cnt[12] ; flag                  ; clk          ; clk         ; 0.000        ; 0.000      ; 9.273      ;
+; 9.124 ; \counter_proc:cnt[17] ; flag                  ; clk          ; clk         ; 0.000        ; 0.000      ; 9.345      ;
+; 9.174 ; \counter_proc:cnt[2]  ; \counter_proc:cnt[25] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.395      ;
+; 9.174 ; \counter_proc:cnt[2]  ; \counter_proc:cnt[23] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.395      ;
+; 9.174 ; \counter_proc:cnt[2]  ; \counter_proc:cnt[24] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.395      ;
+; 9.174 ; \counter_proc:cnt[2]  ; \counter_proc:cnt[0]  ; clk          ; clk         ; 0.000        ; 0.000      ; 9.395      ;
+; 9.174 ; \counter_proc:cnt[2]  ; \counter_proc:cnt[21] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.395      ;
+; 9.174 ; \counter_proc:cnt[2]  ; \counter_proc:cnt[20] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.395      ;
+; 9.174 ; \counter_proc:cnt[2]  ; \counter_proc:cnt[19] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.395      ;
+; 9.174 ; \counter_proc:cnt[2]  ; \counter_proc:cnt[22] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.395      ;
+; 9.174 ; \counter_proc:cnt[2]  ; \counter_proc:cnt[15] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.395      ;
+; 9.174 ; \counter_proc:cnt[2]  ; \counter_proc:cnt[18] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.395      ;
+; 9.174 ; \counter_proc:cnt[2]  ; \counter_proc:cnt[16] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.395      ;
+; 9.174 ; \counter_proc:cnt[2]  ; \counter_proc:cnt[17] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.395      ;
+; 9.174 ; \counter_proc:cnt[2]  ; \counter_proc:cnt[13] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.395      ;
+; 9.174 ; \counter_proc:cnt[2]  ; \counter_proc:cnt[12] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.395      ;
+; 9.174 ; \counter_proc:cnt[2]  ; \counter_proc:cnt[11] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.395      ;
+; 9.174 ; \counter_proc:cnt[2]  ; \counter_proc:cnt[14] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.395      ;
+; 9.174 ; \counter_proc:cnt[2]  ; \counter_proc:cnt[10] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.395      ;
+; 9.174 ; \counter_proc:cnt[2]  ; \counter_proc:cnt[9]  ; clk          ; clk         ; 0.000        ; 0.000      ; 9.395      ;
+; 9.174 ; \counter_proc:cnt[2]  ; \counter_proc:cnt[8]  ; clk          ; clk         ; 0.000        ; 0.000      ; 9.395      ;
+; 9.174 ; \counter_proc:cnt[2]  ; \counter_proc:cnt[7]  ; clk          ; clk         ; 0.000        ; 0.000      ; 9.395      ;
+; 9.174 ; \counter_proc:cnt[2]  ; \counter_proc:cnt[5]  ; clk          ; clk         ; 0.000        ; 0.000      ; 9.395      ;
+; 9.174 ; \counter_proc:cnt[2]  ; \counter_proc:cnt[4]  ; clk          ; clk         ; 0.000        ; 0.000      ; 9.395      ;
+; 9.174 ; \counter_proc:cnt[2]  ; \counter_proc:cnt[3]  ; clk          ; clk         ; 0.000        ; 0.000      ; 9.395      ;
+; 9.174 ; \counter_proc:cnt[2]  ; \counter_proc:cnt[6]  ; clk          ; clk         ; 0.000        ; 0.000      ; 9.395      ;
+; 9.174 ; \counter_proc:cnt[2]  ; \counter_proc:cnt[1]  ; clk          ; clk         ; 0.000        ; 0.000      ; 9.395      ;
+; 9.174 ; \counter_proc:cnt[2]  ; \counter_proc:cnt[2]  ; clk          ; clk         ; 0.000        ; 0.000      ; 9.395      ;
+; 9.228 ; \counter_proc:cnt[11] ; flag                  ; clk          ; clk         ; 0.000        ; 0.000      ; 9.449      ;
+; 9.351 ; \counter_proc:cnt[8]  ; flag                  ; clk          ; clk         ; 0.000        ; 0.000      ; 9.572      ;
+; 9.374 ; \counter_proc:cnt[10] ; flag                  ; clk          ; clk         ; 0.000        ; 0.000      ; 9.595      ;
+; 9.509 ; \counter_proc:cnt[22] ; flag                  ; clk          ; clk         ; 0.000        ; 0.000      ; 9.730      ;
+; 9.636 ; \counter_proc:cnt[0]  ; flag                  ; clk          ; clk         ; 0.000        ; 0.000      ; 9.857      ;
+; 9.679 ; \counter_proc:cnt[6]  ; \counter_proc:cnt[25] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.900      ;
+; 9.679 ; \counter_proc:cnt[6]  ; \counter_proc:cnt[23] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.900      ;
+; 9.679 ; \counter_proc:cnt[6]  ; \counter_proc:cnt[24] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.900      ;
+; 9.679 ; \counter_proc:cnt[6]  ; \counter_proc:cnt[0]  ; clk          ; clk         ; 0.000        ; 0.000      ; 9.900      ;
+; 9.679 ; \counter_proc:cnt[6]  ; \counter_proc:cnt[21] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.900      ;
+; 9.679 ; \counter_proc:cnt[6]  ; \counter_proc:cnt[20] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.900      ;
+; 9.679 ; \counter_proc:cnt[6]  ; \counter_proc:cnt[19] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.900      ;
+; 9.679 ; \counter_proc:cnt[6]  ; \counter_proc:cnt[22] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.900      ;
+; 9.679 ; \counter_proc:cnt[6]  ; \counter_proc:cnt[15] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.900      ;
+; 9.679 ; \counter_proc:cnt[6]  ; \counter_proc:cnt[18] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.900      ;
+; 9.679 ; \counter_proc:cnt[6]  ; \counter_proc:cnt[16] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.900      ;
+; 9.679 ; \counter_proc:cnt[6]  ; \counter_proc:cnt[17] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.900      ;
+; 9.679 ; \counter_proc:cnt[6]  ; \counter_proc:cnt[13] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.900      ;
+; 9.679 ; \counter_proc:cnt[6]  ; \counter_proc:cnt[12] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.900      ;
+; 9.679 ; \counter_proc:cnt[6]  ; \counter_proc:cnt[11] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.900      ;
+; 9.679 ; \counter_proc:cnt[6]  ; \counter_proc:cnt[14] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.900      ;
+; 9.679 ; \counter_proc:cnt[6]  ; \counter_proc:cnt[10] ; clk          ; clk         ; 0.000        ; 0.000      ; 9.900      ;
+; 9.679 ; \counter_proc:cnt[6]  ; \counter_proc:cnt[9]  ; clk          ; clk         ; 0.000        ; 0.000      ; 9.900      ;
+; 9.679 ; \counter_proc:cnt[6]  ; \counter_proc:cnt[8]  ; clk          ; clk         ; 0.000        ; 0.000      ; 9.900      ;
+; 9.679 ; \counter_proc:cnt[6]  ; \counter_proc:cnt[7]  ; clk          ; clk         ; 0.000        ; 0.000      ; 9.900      ;
+; 9.679 ; \counter_proc:cnt[6]  ; \counter_proc:cnt[5]  ; clk          ; clk         ; 0.000        ; 0.000      ; 9.900      ;
+; 9.679 ; \counter_proc:cnt[6]  ; \counter_proc:cnt[4]  ; clk          ; clk         ; 0.000        ; 0.000      ; 9.900      ;
+; 9.679 ; \counter_proc:cnt[6]  ; \counter_proc:cnt[3]  ; clk          ; clk         ; 0.000        ; 0.000      ; 9.900      ;
+; 9.679 ; \counter_proc:cnt[6]  ; \counter_proc:cnt[6]  ; clk          ; clk         ; 0.000        ; 0.000      ; 9.900      ;
+; 9.679 ; \counter_proc:cnt[6]  ; \counter_proc:cnt[1]  ; clk          ; clk         ; 0.000        ; 0.000      ; 9.900      ;
+; 9.679 ; \counter_proc:cnt[6]  ; \counter_proc:cnt[2]  ; clk          ; clk         ; 0.000        ; 0.000      ; 9.900      ;
+; 9.771 ; \counter_proc:cnt[13] ; flag                  ; clk          ; clk         ; 0.000        ; 0.000      ; 9.992      ;
+; 9.940 ; \counter_proc:cnt[12] ; \counter_proc:cnt[25] ; clk          ; clk         ; 0.000        ; 0.000      ; 10.161     ;
+; 9.940 ; \counter_proc:cnt[12] ; \counter_proc:cnt[23] ; clk          ; clk         ; 0.000        ; 0.000      ; 10.161     ;
+; 9.940 ; \counter_proc:cnt[12] ; \counter_proc:cnt[24] ; clk          ; clk         ; 0.000        ; 0.000      ; 10.161     ;
+; 9.940 ; \counter_proc:cnt[12] ; \counter_proc:cnt[0]  ; clk          ; clk         ; 0.000        ; 0.000      ; 10.161     ;
+; 9.940 ; \counter_proc:cnt[12] ; \counter_proc:cnt[21] ; clk          ; clk         ; 0.000        ; 0.000      ; 10.161     ;
++-------+-----------------------+-----------------------+--------------+-------------+--------------+------------+------------+
+
+
++-------------------------------------------------------------------+
+; Setup Transfers                                                   ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; clk        ; clk      ; 1223     ; 0        ; 0        ; 0        ;
+; flag       ; clk      ; 1        ; 1        ; 0        ; 0        ;
+; flag       ; flag     ; 92       ; 0        ; 0        ; 0        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++-------------------------------------------------------------------+
+; Hold Transfers                                                    ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; clk        ; clk      ; 1223     ; 0        ; 0        ; 0        ;
+; flag       ; clk      ; 1        ; 1        ; 0        ; 0        ;
+; flag       ; flag     ; 92       ; 0        ; 0        ; 0        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++-------------------------------------------------------------------+
+; Recovery Transfers                                                ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; clk        ; clk      ; 702      ; 0        ; 0        ; 0        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++-------------------------------------------------------------------+
+; Removal Transfers                                                 ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; clk        ; clk      ; 702      ; 0        ; 0        ; 0        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
+---------------
+; Report TCCS ;
+---------------
+No dedicated SERDES Transmitter circuitry present in device or used in design
+
+
+---------------
+; Report RSKM ;
+---------------
+No non-DPA dedicated SERDES Receiver circuitry present in device or used in design
+
+
++------------------------------------------------+
+; Unconstrained Paths Summary                    ;
++---------------------------------+-------+------+
+; Property                        ; Setup ; Hold ;
++---------------------------------+-------+------+
+; Illegal Clocks                  ; 0     ; 0    ;
+; Unconstrained Clocks            ; 0     ; 0    ;
+; Unconstrained Input Ports       ; 1     ; 1    ;
+; Unconstrained Input Port Paths  ; 37    ; 37   ;
+; Unconstrained Output Ports      ; 8     ; 8    ;
+; Unconstrained Output Port Paths ; 12    ; 12   ;
++---------------------------------+-------+------+
+
+
++-------------------------------------+
+; Clock Status Summary                ;
++--------+-------+------+-------------+
+; Target ; Clock ; Type ; Status      ;
++--------+-------+------+-------------+
+; clk    ; clk   ; Base ; Constrained ;
+; flag   ; flag  ; Base ; Constrained ;
++--------+-------+------+-------------+
+
+
++---------------------------------------------------------------------------------------------------+
+; Unconstrained Input Ports                                                                         ;
++------------+--------------------------------------------------------------------------------------+
+; Input Port ; Comment                                                                              ;
++------------+--------------------------------------------------------------------------------------+
+; reset      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
++------------+--------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------+
+; Unconstrained Output Ports                                                                          ;
++-------------+---------------------------------------------------------------------------------------+
+; Output Port ; Comment                                                                               ;
++-------------+---------------------------------------------------------------------------------------+
+; Y[0]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Y[1]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Y[2]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Y[3]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Y[4]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Y[5]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Y[6]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Y[7]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
++-------------+---------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------+
+; Unconstrained Input Ports                                                                         ;
++------------+--------------------------------------------------------------------------------------+
+; Input Port ; Comment                                                                              ;
++------------+--------------------------------------------------------------------------------------+
+; reset      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
++------------+--------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------+
+; Unconstrained Output Ports                                                                          ;
++-------------+---------------------------------------------------------------------------------------+
+; Output Port ; Comment                                                                               ;
++-------------+---------------------------------------------------------------------------------------+
+; Y[0]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Y[1]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Y[2]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Y[3]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Y[4]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Y[5]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Y[6]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; Y[7]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
++-------------+---------------------------------------------------------------------------------------+
+
+
++--------------------------+
+; Timing Analyzer Messages ;
++--------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Timing Analyzer
+    Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+    Info: Processing started: Fri Jun 16 12:35:22 2023
+Info: Command: quartus_sta terrific_signal -c terrific_signal
+Info: qsta_default_script.tcl version: #1
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
+Info (21077): Low junction temperature is 0 degrees C
+Info (21077): High junction temperature is 85 degrees C
+Info (334003): Started post-fitting delay annotation
+Info (334004): Delay annotation completed successfully
+Critical Warning (332012): Synopsys Design Constraints File file not found: 'terrific_signal.sdc'. A Synopsys Design Constraints File is required by the Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
+Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
+Info (332105): Deriving Clocks
+    Info (332105): create_clock -period 1.000 -name flag flag
+    Info (332105): create_clock -period 1.000 -name clk clk
+Info: Found TIMING_ANALYZER_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
+Info: Can't run Report Timing Closure Recommendations. The current device family is not supported.
+Critical Warning (332148): Timing requirements not met
+Info (332146): Worst-case setup slack is -10.997
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):   -10.997            -194.979 clk 
+    Info (332119):    -4.338             -37.945 flag 
+Info (332146): Worst-case hold slack is -2.997
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -2.997              -2.997 clk 
+    Info (332119):     1.686               0.000 flag 
+Info (332146): Worst-case recovery slack is -11.813
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):   -11.813            -317.535 clk 
+Info (332146): Worst-case removal slack is 6.289
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     6.289               0.000 clk 
+Info (332146): Worst-case minimum pulse width slack is -2.289
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -2.289              -2.289 clk 
+    Info (332119):     0.234               0.000 flag 
+Info (332001): The selected device family is not supported by the report_metastability command.
+Info (332102): Design is not fully constrained for setup requirements
+Info (332102): Design is not fully constrained for hold requirements
+Info: Quartus Prime Timing Analyzer was successful. 0 errors, 3 warnings
+    Info: Peak virtual memory: 4682 megabytes
+    Info: Processing ended: Fri Jun 16 12:35:23 2023
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:01
+
+

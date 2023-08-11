@@ -1,0 +1,11 @@
+Fitter Status : Successful - Fri Jun 16 12:35:19 2023
+Quartus Prime Version : 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+Revision Name : terrific_signal
+Top-level Entity Name : terrific_signal
+Family : MAX V
+Device : 5M1270ZT144C5
+Timing Models : Final
+Total logic elements : 84 / 1,270 ( 7 % )
+Total pins : 10 / 114 ( 9 % )
+Total virtual pins : 0
+UFM blocks : 0 / 1 ( 0 % )

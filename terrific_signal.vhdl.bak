@@ -1,0 +1,46 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+
+
+-- package
+
+package sig is
+
+	component sig is
+		port(
+			Y: out std_logic_vector(5 downto 0) -- mapping [N1,N0,E1,E0,S1,S0,W1,W0]
+															-- for individual value refer PS document
+			
+		);
+	end component sig;
+
+end package sig;
+
+
+
+
+--entity
+
+entity sig is
+	port(
+		Y: out std_logic_vector(5 downto 0) -- mapping [N1,N0,E1,E0,S1,S0,W1,W0]
+														-- for individual value refer PS document
+		
+	);
+end entity sig;
+
+
+
+
+-- architecture
+
+architecture arch of sig is
+
+type state is (GN,GE,GS,GW,TNE,TES,TSW,TWN);--GREENS AND TRANSITIONS
+
+signal current_state, next_state : state:= GN;
+
+begin 
+
+end arch;

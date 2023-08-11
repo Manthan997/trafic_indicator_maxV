@@ -1,0 +1,31 @@
+--DECODER TOP LEVEL UNDER DUT
+
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity DECODER is
+   port(input_clk: in std_logic;
+       	output_vector: out std_logic_vector(11 downto 0)); 
+			--ng,ny,nr,eg,ey,er,sg,sy,sr,wg,wy,wr
+end entity;
+
+
+architecture Wrap of DECODER is
+
+	
+COMPONENT sig is
+	port(
+		clk: in std_logic;
+		Y: out std_logic_vector(5 downto 0) -- mapping [N1,N0,E1,E0,S1,S0,W1,W0]
+														-- for individual value refer PS document	
+		);
+end COMPONENT sig;
+	
+	
+begin
+
+my_instance: SIG port map ( 
+											clk=> input_clk , 
+											Y => output_vector(5 downto 2));
+											
+END WRAP;
