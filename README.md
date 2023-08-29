@@ -1,3 +1,4 @@
+
 model 1
 
 working but encoder is built in 
